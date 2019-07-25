@@ -76,7 +76,7 @@ public class QueryUtils {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the book JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -119,9 +119,8 @@ public class QueryUtils {
             return null;
         }
 
-        // Create an empty ArrayList that we can start adding earthquakes to
+        // Create an empty ArrayList that we can start adding books to
         List<BookList> books = new ArrayList<>();
-
 
 
 
@@ -153,7 +152,7 @@ public class QueryUtils {
                 // Extract the value for the key called "title"
                 String title = volumeInfo.getString("title");
 
-                String authors = "";
+               /* String authors = "";
                 // Extract the JSONArray associated with the key called "authors",
                 // which represents names of authors.
                 JSONArray authorsArray = volumeInfo.optJSONArray("authors");
@@ -165,7 +164,7 @@ public class QueryUtils {
                     } else {
                         authors += " | " + authorsArray.getString(j);
                     }
-                }
+                }*/
 
 
                   // Extract the value for the key called "publishedDate"
@@ -176,9 +175,9 @@ public class QueryUtils {
 
                 // Create a new {@link BookList} object with the title, authors, published date,
                 // and url from the JSON response.
-                BookList book = new BookList(title, authors , publishedDate , url);
+                BookList book = new BookList(title , publishedDate , url);
 
-                // Add the new {@link Earthquake} to the list of earthquakes.
+                // Add the new {@link BookList} to the list of books.
                 books.add(book);
             }
 
@@ -186,10 +185,10 @@ public class QueryUtils {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
-            Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
+            Log.e("QueryUtils", "Problem parsing the books JSON results", e);
         }
 
-        // Return the list of earthquakes
+        // Return the list of books
         return books;
     }
 
@@ -214,10 +213,10 @@ public class QueryUtils {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
 
-        // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
+        // Extract relevant fields from the JSON response and create a list of {@link Books}
         List<BookList> books = extractBookFromJson(jsonResponse);
 
-        // Return the list of {@link Earthquake}s
+        // Return the list of {@link Books}
         return books;
     }
 }

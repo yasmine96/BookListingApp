@@ -65,11 +65,11 @@ public class BookListAdapter extends ArrayAdapter<BookList> {
 
 
         // Find the TextView in the list_item.xml layout with the ID  author name
-        TextView authorNameView = (TextView) listItemView.findViewById(R.id.author);
+       // TextView authorNameView = (TextView) listItemView.findViewById(R.id.author);
 
-        String authorName = currentList.getAuthor();
+       // String authorName = currentList.getAuthor();
         // Display the author name of the current book in that TextView
-        authorNameView.setText(authorName);
+        //authorNameView.setText(authorName);
 
 
         // Find the TextView with view ID date

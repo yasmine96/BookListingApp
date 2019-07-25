@@ -43,7 +43,6 @@ public class BookListActivity extends AppCompatActivity
 
         mEditText=(EditText)findViewById(R.id.search_edit_text);
 
-
         ImageView searchButton = (ImageView) findViewById(R.id.search_button);
 
         final ListView booksListView = (ListView) findViewById(R.id.list);
@@ -54,7 +53,7 @@ public class BookListActivity extends AppCompatActivity
 
         booksListView.setEmptyView(mEmptyTextView);
 
-        // Create a new adapter that takes an empty list of earthquakes as input
+        // Create a new adapter that takes an empty list of books as input
         mAdapter = new BookListAdapter(this, new ArrayList<BookList>());
 
         // Set the adapter on the {@link ListView}
@@ -74,7 +73,6 @@ public class BookListActivity extends AppCompatActivity
 
                 // Create a new intent to view the book URI
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, bookUri);
-
 
                 if(websiteIntent.resolveActivity(getPackageManager())!= null){
                     // Send the intent to launch a new activity
@@ -113,7 +111,7 @@ public class BookListActivity extends AppCompatActivity
                         // Initialize the loader. Pass in the int ID constant defined above and pass in null for
                         // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
                         // because this activity implements the LoaderCallbacks interface).
-                        loaderManager.restartLoader(LOADER_ID, null, BookListActivity.this);
+                        loaderManager.initLoader(LOADER_ID, null, BookListActivity.this);
                     } else  {
                         // Otherwise, display error
                         // First, hide loading indicator so error message will be visible
@@ -143,9 +141,8 @@ public class BookListActivity extends AppCompatActivity
         // Hide loading indicator because the data has been loaded
         progressBar.setVisibility(View.GONE);
 
-        mEmptyTextView.setVisibility(View.GONE);
-        // Set empty state text to display "No Books found."
-        //mEmptyTextView.setText("No Books found");
+
+
 
         // Clear the adapter of previous book data
         mAdapter.clear();
@@ -154,6 +151,12 @@ public class BookListActivity extends AppCompatActivity
         // data set. This will trigger the ListView to update.
         if (data != null && !data.isEmpty()) {
             mAdapter.addAll(data);
+
+        }
+        else{
+
+            // Set empty state text to display "No Books found."
+            mEmptyTextView.setText("No Books found");
 
         }
 

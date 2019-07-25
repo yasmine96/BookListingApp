@@ -3,15 +3,15 @@ package com.example.yasmine.booklisting;
 public class BookList {
 
     private String mTitle;
-    private String mAuthor;
+   // private String mAuthor;
     private String mPublishingYear;
     private String mUrl;
 
 
-    public BookList(String title , String author , String publishingYear ,String url){
+    public BookList(String title  , String publishingYear ,String url){
 
         mTitle = title;
-        mAuthor = author;
+       // mAuthor = author;
         mPublishingYear = publishingYear;
         mUrl = url;
 
@@ -24,10 +24,10 @@ public class BookList {
     }
 
 
-    public String getAuthor(){
+   /* public String getAuthor(){
 
         return mAuthor;
-    }
+    }*/
 
     public String getPublishingYear(){
 
