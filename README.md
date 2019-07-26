@@ -1,7 +1,7 @@
 # BookListingApp
 
 
-An app to learn some phrases and words from english in another language .
+An app that parse GoogleAPIs and search about any book .
 
 
 
